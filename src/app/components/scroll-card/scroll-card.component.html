@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-body">
+      <!-- <h5 class="card-title">Card title</h5> -->
+      <div class="scrollable" [ngStyle]="{'max-height': ht}">
+        <table class="table table-striped" id="tabl">
+          <thead >
+            <tr>
+              <th colspan="2" style="position: sticky;top: 0;background-color: lightblue;height: 50px;" >Total {{meta}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of dat; index as i">
+              <td>{{ x.name }}</td>
+              <td>{{ x.numbers }}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  </div>

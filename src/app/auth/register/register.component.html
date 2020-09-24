@@ -1,0 +1,33 @@
+<div
+    style="height: 100%;margin: 0;position: absolute;width: 100%;background-image: url('https://picjumbo.com/wp-content/uploads/macbook-laptop-2210x1473.jpg');">
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xs-10"
+        style="margin: 5%;border-left: 6px solid red;background-color: #f6f6f6;padding: 20px;">
+        <h3 style="font-style: bold;padding-bottom: 20px;text-align: center;">Create your Account</h3>
+        <form #myform="ngForm" [formGroup]="signUpForm" (ngSubmit)="signup()" class="form form-register">
+            <div class="form-group">
+                <label for="">Email address</label>
+                <input type="text" class="form-control" formControlName="email" id="email" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group" style="padding-bottom: 20px;">
+                <label for="">Password</label>
+                <input type="password" class="form-control" formControlName="password" id="password"
+                    placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <select id="designation" class="form-control" formControlName="designation" #t>
+                    <option value="private">Private Sector</option>
+                    <option value="public">Public Sector</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div class="form-group" *ngIf="t.value == 'others'">
+                <label for="specific">Specify the Sector</label>
+                <input type="text" id="specific" class="form-control" formControlName="sector" />
+            </div>
+            <button type="submit" [disabled]="!myform.valid" class="btn btn-primary"
+                style="float: right;">Register</button>
+        </form>
+    </div>
+</div>

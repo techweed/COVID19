@@ -1,0 +1,15 @@
+<app-header></app-header>
+<div style="display: flex;">
+  <app-scroll-card [dat]="total" [ht]="'90vh'" [meta]="'Confirmed: '+tot.Confirmed.toLocaleString()"></app-scroll-card>
+  <div style="width:500px"></div>
+  <div style="display: flex;;height: 35vh;">
+    <app-scroll-card [dat]="death" [ht]="'30vh'" [meta]="'Deaths: '+tot.Deaths.toLocaleString()"></app-scroll-card>
+    <app-scroll-card [dat]="cured" [ht]="'30vh'" [meta]="'Recovered: '+tot.Recovered.toLocaleString()"></app-scroll-card>
+  </div>
+  <div *ngIf="cv2" style="width: 65vw;height:50vh;position:absolute;right:0;bottom:90px;">
+    <app-country [cv2]="cv2" [chartTypeLine]="true"></app-country>
+
+  </div>
+
+
+</div>

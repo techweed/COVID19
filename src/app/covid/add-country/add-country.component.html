@@ -1,0 +1,59 @@
+<div class="custom-modal-container">
+    <div class="custom-modal-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" style="padding:20px;">
+            <h4 style="padding-bottom:20px;text-align: center;">Enter Country Details</h4>
+
+            <div class="form-group">
+                <label for="Country">Country</label>
+                <input type="text" id="Country" placeholder="Country Name" class="form-control"
+                    [ngModel]="temp?temp.Country:''" name="Country" required>
+            </div>
+            <div style="display: inline-block;padding-bottom: 10px;width: 100%;">
+                <div class="form-group" style="float: left;width: 47%;">
+                    <label for="NewConfirmed">New Confirmed</label>
+                    <input type="text" id="NewConfirmed" placeholder="New Confirmed" class="form-control"
+                        [ngModel]="temp?temp.NewConfirmed:''" name="NewConfirmed" required>
+                </div>
+                <div class="form-group" style="float: right;width: 47%;">
+                    <label for="TotalConfirmed">Total Confirmed</label>
+                    <input type="text" id="TotalConfirmed" placeholder="Total Confirmed" class="form-control"
+                        [ngModel]="temp?temp.TotalConfirmed:''" name="TotalConfirmed" required>
+                </div>
+            </div>
+            <div style="display: inline-block;padding-bottom: 10px;width: 100%;">
+                <div class="form-group" style="float: left;width: 47%;">
+                    <label for="NewDeaths">New Deaths</label>
+                    <input type="text" id="NewDeaths" placeholder="New Deaths" class="form-control"
+                        [ngModel]="temp?temp.NewDeaths:''" name="NewDeaths" required>
+                </div>
+                <div class="form-group" style="float: right;width: 47%;">
+                    <label for="TotalDeaths">Total Deaths</label>
+                    <input type="text" id="TotalDeaths" placeholder="TotalDeaths" class="form-control"
+                        [ngModel]="temp?temp.TotalDeaths:''" name="TotalDeaths" required>
+                </div>
+            </div>
+            <div style="display: inline-block;padding-bottom: 10px;width: 100%;">
+                <div class="form-group" style="float: left;width: 47%;">
+                    <label for="NewRecovered">New Recovered</label>
+                    <input type="text" id="NewRecovered" placeholder="New Recovered" class="form-control"
+                        [ngModel]="temp?temp.NewRecovered:''" name="NewRecovered" required>
+                </div>
+                    <div class="form-group" style="float: right;width: 47%;">
+                        <label for="TotalRecovered">Total Recovered</label>
+                        <input type="text" id="TotalRecovered" placeholder="Total Recovered"
+                            class="form-control" [ngModel]="temp?temp.TotalRecovered:''" name="TotalRecovered" required>
+                    </div>
+                </div>
+
+                <div class="row" style="float: right;padding-top: 20px;">
+                    <button class="btn btn-danger" (click)="toggleModal()">Cancel</button>
+                    <button style="margin-left: 10px;margin-right: 10px;" class="btn btn-primary" type="submit"
+                        [disabled]="!f.valid">{{temp?"Update":"Add"}}</button>
+
+                </div>
+        </form>
+
+    </div>
+
+
+</div>

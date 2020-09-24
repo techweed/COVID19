@@ -1,0 +1,67 @@
+<div>
+  <div *ngIf="alert" class="alert alert-danger" closeAlert (click)="alertClose()" role="alert"
+    style="position:absolute; right:1%;bottom:0px; z-index: 1;">
+    <a style="margin-inline-start: 5px;" class="close" data-dismiss="alert" aria-label="close"> &times;</a>
+    <strong>Alert!</strong> Login for futher access.
+  </div>
+
+
+  <app-add-country *ngIf="addC" (closeModal)="closeModal($event)" (updat)="updatd($event)" [cv]="cv" [cvApi]="cvApi" [temp]="temp"></app-add-country>
+
+
+    <div style="padding:15px;">
+      <label for="selector" style="padding-right:1em;">Country: </label>
+      <select name="selector" (ngModelChange)="selectChangeHandler($event)" [ngModel]="cv">
+        <option *ngFor="let x of cv" [ngValue]="x">{{x.Country}}</option>
+      </select>
+      <button class="btn btn-danger" style="float: right;" (click)="addCountry()"> + </button>
+      <button *ngIf="show" class="btn btn-primary" style="float: right;margin-right: 10px;" (click)="toggleChartMode()"> {{dailyChart?'Daily':'Actual'}} </button>
+      <button *ngIf="show" class="btn btn-primary" style="float: right;margin-right: 10px;" (click)="toggleChartType()"> {{chartTypeLine?'Line':'Bar'}} </button>
+      <button *ngIf="show" class="btn btn-default" style="float: right;margin-right: 10px;" (click)="closeGraph()"> x </button>
+
+    </div>
+
+
+  <div *ngIf="show">
+    <app-country [cv2]="dailyChart?cv3:cv2" [chartTypeLine]="chartTypeLine"></app-country>
+  </div>
+  <table class="table table-striped" id="tabl">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">&#9961;</th>
+        <th scope="col" (click)="sortd('Country')">Country </th>
+        <th scope="col" (click)="sortd('NewConfirmed')">NewConfirmed</th>
+        <th scope="col" (click)="sortd('TotalConfirmed')">TotalConfirmed</th>
+        <th scope="col" (click)="sortd('NewDeaths')">NewDeaths</th>
+        <th scope="col" (click)="sortd('TotalDeaths')">TotalDeaths</th>
+        <th scope="col" (click)="sortd('NewRecovered')">NewRecovered</th>
+        <th scope="col" (click)="sortd('TotalRecovered')">TotalRecovered</th>
+        <th scope="col"><img [src]="'https://img.icons8.com/dusk/2x/filled-trash.png'" class="mr-2" style="width: 20px"></th>
+        <th scope="col"><img [src]="'https://img.icons8.com/dusk/2x/edit.png'" class="mr-2" style="width: 20px"></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of cv; index as i" (click)="clicker(x)">
+        <th scope="row">{{ i + 1 }}</th>
+        <td> <img *ngIf="!x.Slug.startsWith('NEW_');" src="https://www.countryflags.io/{{x.CountryCode}}/shiny/64.png" class="mr-2" style="width: 20px">
+          <img *ngIf="x.Slug.startsWith('NEW_');" src="https://assets.dryicons.com/uploads/icon/svg/2672/flag.svg" class="mr-2" style="width: 20px">
+        </td>
+        <td>{{ x.Country }}</td>
+        <td>{{ x.NewConfirmed }}</td>
+        <td>{{ x.TotalConfirmed }}</td>
+        <td>{{ x.NewDeaths }}</td>
+        <td>{{ x.TotalDeaths }}</td>
+        <td>{{ x.NewRecovered }}</td>
+        <td>{{ x.TotalRecovered }}</td>
+        <td> <img *ngIf="x.Slug.startsWith('NEW_');" (click)="remove(x.Slug);" [src]="'https://img.icons8.com/dusk/2x/filled-trash.png'" class="mr-2" style="width: 20px">
+        </td>
+        <td> <img *ngIf="x.Slug.startsWith('NEW_');" (click)="edit(x.Slug);" [src]="'https://img.icons8.com/dusk/2x/edit.png'" class="mr-2" style="width: 20px">
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

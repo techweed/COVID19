@@ -1,0 +1,92 @@
+/* You can add global styles to this file, and also import other style files */
+
+.splashScreenClass {
+    background: #310404;
+    font-family: 'Roboto Condensed', sans-serif;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10000;
+
+}
+
+.container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 0;
+    background: -webkit-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+    background: -moz-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+    background: -ms-radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+    background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3) 35%, rgba(0, 0, 0, 0.7));
+}
+
+.container h2 {
+    position: fixed;
+    top: 30vh;
+    font-size: 7vw;
+    width: 100vw;
+    text-align: center;
+    color: transparent;
+    animation: blurFadeInOut 2s ease-in backwards;
+}
+.container h2.frame-1 {
+    animation-delay: 0s;
+}
+.container h2.frame-2 {
+    animation-delay: 2s;
+}
+
+.container h2.frame-5 {
+    animation: none;
+    color: transparent;
+    text-shadow: 0px 0px 1px #fff;
+}
+.container h2.frame-5 span {
+    animation: blurFadeIn 0.5s ease-in 4s backwards;
+    color: transparent;
+    text-shadow: 0px 0px 1px #fff;
+}
+.container h2.frame-5 span:nth-child(2) {
+    animation-delay: 4.5s;
+}
+
+@keyframes blurFadeInOut{
+    0%{
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(0.9);
+    }
+    20%,75%{
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 0;
+        text-shadow: 0px 0px 50px #fff;
+        transform: scale(0);
+    }
+}
+@keyframes blurFadeIn{
+    0%{
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(1.3);
+    }
+    50%{
+        opacity: 0.5;
+        text-shadow: 0px 0px 10px #fff;
+        transform: scale(1.1);
+    }
+    100%{
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        transform: scale(1);
+    }
+
+}
